@@ -1,26 +1,33 @@
-import React, {useState} from "react";
+import React from "react";
 import FilterTable from 'react-filter-tables';
 
 function ResultList(props) {
- const [res,setres] = useState ({})
- 
- {
- props.results.map(result => {
-   let data = [
-     {
-       'Id': result.id,
-       'type': 'test',
-       'name': result.name.first,
-       'username': 'abcd123'
-     }
-   ]
-  setres(data);
- 
- })}
-  console.log(res);
+  console.log(props.results);
+  
+  let data = [
+    {
+      'Id': 1,
+      'type': 'test',
+      'name': 'alan',
+      'username': 'abcd123'
+    },
+    {
+      'Id': 2,
+      'type': 'xyz',
+      'name': 'diana',
+      'username': 'userd1'
+    },
+    {
+      'Id': 3,
+      'type': 'abc',
+      'name': 'tessa',
+      'username': 'tez45'
+    }
+  ]
+  
   return (
     <>
-    {/* <FilterTable data={data}/> */}
+    <FilterTable data={data}/>
     
       
        {props.results.map(result => (
@@ -39,3 +46,4 @@ function ResultList(props) {
 }
 
 export default ResultList;
+

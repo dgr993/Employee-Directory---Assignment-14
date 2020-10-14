@@ -1,49 +1,40 @@
 import React from "react";
-import FilterTable from 'react-filter-tables';
-
+import FilterTable from "react-filter-tables";
 function ResultList(props) {
   console.log(props.results);
-  
-  let data = [
-    {
-      'Id': 1,
-      'type': 'test',
-      'name': 'alan',
-      'username': 'abcd123'
-    },
-    {
-      'Id': 2,
-      'type': 'xyz',
-      'name': 'diana',
-      'username': 'userd1'
-    },
-    {
-      'Id': 3,
-      'type': 'abc',
-      'name': 'tessa',
-      'username': 'tez45'
-    }
-  ]
-  
+  let data = [];
+  props.results.map((test) => {
+    let newTable = {
+      Id: (
+        <img
+          alt={test.title}
+          className="img-fluid"
+          src={test.picture.thumbnail}
+        />
+      ),
+      First_Name: test.name.first,
+      Last_Name: test.name.last,
+      username: test.name.first,
+      email: test.email,
+      Cell_Number: test.cell,
+    };
+    data.push(newTable);
+  });
+  console.log(data);
   return (
     <>
-    <FilterTable data={data}/>
-    
-      
-       {props.results.map(result => (
-        <div>
-        <p className="list-group-item" key={result.id}>
-          <img alt={result.title} className="img-fluid" src={result.picture.thumbnail} />
-        </p>
-         <p className="list-group-item" key={result.id}> </p>
-         <p>{result.name.first} {result.name.last}</p>
-       
-       </div>
-      ))}
-    
+      <FilterTable
+        data={data}
+        recordsPerPage={8}
+        style={{ position: "absolute", minWidth: "50%" }}
+      />
     </>
   );
 }
-
 export default ResultList;
+
+
+
+
+
 
